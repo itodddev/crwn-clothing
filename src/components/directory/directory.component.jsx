@@ -17,12 +17,10 @@ class Directory extends React.Component {
       <div className='directory-menu'>
         {
           // Destructure props into individual variables
-          this.state.sections.map(({ id, title, imageUrl, size }) => (
+          this.state.sections.map(({ id, ...sectionProps }) => (
             <MenuItem
               key={ id } 
-              title={ title }
-              imageUrl={ imageUrl }
-              size={ size }
+              { ...sectionProps }
             />
           ))
         }
