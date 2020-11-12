@@ -6,8 +6,9 @@ import './custom-button.styles.scss';
 // <CustomButton>Sign in</CustomButton>
 // Sign in is the children
 // ...buttonProps has all the props, like type="submit"
-const CustomButton = ({ children, ...buttonProps }) => (
-  <button className="custom-button" { ...buttonProps }>
+const CustomButton = ({ children, isGoogleSignIn, ...buttonProps }) => (
+  <button 
+    className={`${ isGoogleSignIn ? 'google-sign-in' : ''} custom-button`} { ...buttonProps }>
     { children } 
   </button>
 );
