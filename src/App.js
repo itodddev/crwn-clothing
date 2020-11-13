@@ -29,11 +29,11 @@ class App extends React.Component {
             id: snapshot.id,
             ...snapshot.data()
             }
-          }, () => console.log(this.state));
+          });
         });
       } else {
         // will set currectUser to null, because it did pass conditional
-        this.setState({ currentUser: userAuth }, () => console.log(this.state));
+        this.setState({ currentUser: userAuth });
       }
       
       
