@@ -59,7 +59,8 @@ class SignIn extends React.Component {
           />
           <div className='buttons'>
             <CustomButton type="submit">Sign in</CustomButton>
-            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>Sign in With Google</CustomButton>
+            <CustomButton type="button" isGoogleSignIn onClick={signInWithGoogle}>Sign in With Google</CustomButton>
+            {/* type="button", this prevents the sign in fields to trigger asking to fill in, this is because any     buttons inside a form element will cause the form to treat the buttons as type='submit' */}
           </div>
         </form>
       </div>
