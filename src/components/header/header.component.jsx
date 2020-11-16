@@ -5,8 +5,11 @@ import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 
 import './header.styles.scss';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser }) => (
+
+const Header = ({ currentUser, cartHidden }) => (
   <div className='header'>
     <Link to='/' className='logo-container'>
       <Logo className='logo' />       
@@ -24,7 +27,9 @@ const Header = ({ currentUser }) => (
         :
         <Link className='option' to='/signin'>SIGN IN</Link>
       }
+      <CartIcon />
     </div>
+    { cartHidden ? null : <CartDropdown />}
   </div>
 );
 
@@ -32,7 +37,8 @@ const Header = ({ currentUser }) => (
 // state gets passed the root reducer which has a property 'user' that has the 'currentUser' object passed from user.reducer.js
 // mapStateToProps and connect is used anywhere we need props from our reducers
 const  mapStateToProps = state => ({
-  currentUser: state.user.currentUser
-})
+  currentUser: state.user.currentUser,
+  cartHidden: state.cart.hidden
+});
 
 export default connect(mapStateToProps)(Header);
