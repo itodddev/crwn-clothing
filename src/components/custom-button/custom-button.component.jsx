@@ -6,9 +6,18 @@ import './custom-button.styles.scss';
 // <CustomButton>Sign in</CustomButton>
 // Sign in is the children
 // ...buttonProps has all the props, like type="submit"
-const CustomButton = ({ children, isGoogleSignIn, ...buttonProps }) => (
+const CustomButton = ({ 
+  children,
+  isGoogleSignIn,
+  inverted, 
+  ...buttonProps
+ }) => (
   <button 
-    className={`${ isGoogleSignIn ? 'google-sign-in' : ''} custom-button`} { ...buttonProps }>
+    className={
+      `${ inverted ? 'inverted' : ''}
+       ${ isGoogleSignIn ? 'google-sign-in' : ''} custom-button` }
+       { ...buttonProps }
+  >
     { children } 
   </button>
 );
