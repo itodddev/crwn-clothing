@@ -4,6 +4,11 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
 import { connect } from 'react-redux';
 
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+
+
 import './header.styles.scss';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
@@ -36,9 +41,11 @@ const Header = ({ currentUser, cartHidden }) => (
 // can be named anything, but mapStateToProps is a standard
 // state gets passed the root reducer which has a property 'user' that has the 'currentUser' object passed from user.reducer.js
 // mapStateToProps and connect is used anywhere we need props from our reducers
-const  mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
-  cartHidden: state.cart.hidden
+
+// better way to create selectors if you have multiple.  automatically passes in top level state
+const  mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser, //memoized
+  cartHidden: selectCartHidden
 });
 
 export default connect(mapStateToProps)(Header);
